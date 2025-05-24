@@ -7,14 +7,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-    <header className="bg-gray-800 text-white p-4 text-center text-lg font-semibold">
-        Hello World
-      </header>      
+    <html lang="en">  
+    <header className="sticky top-0 z-50 bg-gray-800 text-white p-4 text-center">
+    Hello World
+    </header>
       <body className={`${inter.className} antialiased`}>{children}</body>
-      <footer className="bg-gray-800 text-white p-4 text-center text-lg font-semibold">
-        Hello World
-      </footer>
+      
+<footer className="sticky bottom-0 z-50 bg-gray-800 text-white p-4 text-center">
+  Hello World
+</footer>
     </html>
   );
 }
