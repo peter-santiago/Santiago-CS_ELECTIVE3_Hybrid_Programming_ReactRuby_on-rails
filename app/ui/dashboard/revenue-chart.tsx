@@ -1,6 +1,7 @@
 import { generateYAxis } from '@/app/lib/utils';
 import { CalendarIcon } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
+import { fetchRevenue } from '@/app/lib/data';
 import { Revenue } from '@/app/lib/definitions';
 
 // This component is representational only.
@@ -9,13 +10,10 @@ import { Revenue } from '@/app/lib/definitions';
 // https://www.chartjs.org/
 // https://airbnb.io/visx/
 
-export default async function RevenueChart({
-  revenue,
-}: {
-  revenue: Revenue[];
-}) {
-  const chartHeight = 350;
+export default async function RevenueChart() {
+  const revenue = await fetchRevenue(); // Fetch data inside the component
 
+  const chartHeight = 350;
   const { yAxisLabels, topLabel } = generateYAxis(revenue);
 
   if (!revenue || revenue.length === 0) {
@@ -54,7 +52,7 @@ export default async function RevenueChart({
         </div>
         <div className="flex items-center pb-2 pt-6">
           <CalendarIcon className="h-5 w-5 text-gray-500" />
-          <h3 className="ml-2 text-sm text-gray-500 ">Last 12 months</h3>
+          <h3 className="ml-2 text-sm text-gray-500">Last 12 months</h3>
         </div>
       </div>
     </div>
